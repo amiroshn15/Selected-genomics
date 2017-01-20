@@ -7,8 +7,9 @@ function f = pop_speed(t, type, option)
 % type = 1 returns Lambda(t)=int_0^t lambda(s) ds
 % type = 2 returns Lambda^{-1}(t)
 
-
 % option = the choice of a particular speed function
+
+% option = 0 lambda(t)=1, Lambda(t)=t, Lambda_inv(a)=a
 % option = 1 lambda(t) = piecewise-constant function
 % option = 2 continuous smooth function
 % option = "else" lambda(t)=1, Lambda(t)=t, Lambda_inv(a)=a
@@ -52,11 +53,9 @@ if (opt_val==1) % piecewise-continuous lambda(t)
                     lambda_vals = option.param.lambda_vals;
 
                 end
-
-                 
-            end
+                
+            end           
             
-        
         else
             
             times  = [0.0, 0.05, 0.2 ];
@@ -69,7 +68,7 @@ if (opt_val==1) % piecewise-continuous lambda(t)
         
         
         Lambda_vals = pcont_cum_speed_node_vals(times,lambda_vals);
-        
+
         
     if (type==1)        
 
