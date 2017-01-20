@@ -1,21 +1,30 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This code has been downloaded from:
+% https://github.com/amiroshn15/Selected-genomics/tree_length_joint_2loci
+%
+% Authors:
+% Alexey Miroshnikov <amiroshn@gmail.com>
+% Matthias Steinrucken <steinruecken@schoolph.umass.edu>
+%
+% License: 	GPL-2 | GPL-3 [expanded from: GPL (? 2)]
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % [Set 1a] Compute and plot 
 %
-%          F(t,x):= { P( A(t)=k, L(t) < x ) }_{k=1,2,..n}
-%                   
+%          F(t,x):= { P( A(t)=k, L(t) < x ) }_{k=1,2,...,n}                 
 %                   with t in [0,t_max] and x in [0, x_max]
 %
 %    A(t,w)- ancestral (marginal) process for one locus on a chromosose 
 %            for the case of a variable size population with the coalescent 
-%            rate function lambda(t) set in 'pop_speed_opt'.
+%            rate function lambda(t) which is set in 'pop_speed_opt.val'.
 %
 %    L(t,w)= int_0^t A(s,w) ds - accumulated length of the tree.
 %
-%    Process (A(t),L(t)) is inhomogenous continuous-time Markovian.
+%    (A(t),L(t)) is an inhomogenous time-continuous Markov process.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% 1a.1 Computations
+%% 1a.1 Compute P( A(t)=k, L(t) < x ), k=1,2,...,n                 
 
 n = 5; % number of individuals
 
@@ -38,7 +47,7 @@ pop_speed_opt.param = prm;
 
 % % domain boundaries
 
-t_max = 0.1;     % maximal t-interval
+t_max = 0.5;     % maximal t-interval
  
 x_max = n*t_max;  % maximal x-interval
 
@@ -64,7 +73,7 @@ x = linspace(0.0, x_max, N_x);
 P_A_L_pde = prob_X_L_1p_upt_decr_interp_t(F, X, T, P_A,N_t_int,...
                                           v_inv_max,x,t,'linear');
 
-%% 1a.2 Plotting P(A(t)=k,L(t)<x)
+%% 1a.2 Plot P(A(t)=k,L(t)<x)
 
 fntsz = 20;
 
@@ -135,7 +144,7 @@ for m=1:n
    
 end
 
-%% 1a.3 Plotting coalescent rate lambda(t)
+%% 1a.3 Plot coalescent rate lambda(t)
 
 h_fig=figure('units','normalized','outerposition',[0.2 0.1 0.6 0.85]);
 
@@ -155,7 +164,7 @@ title(ttxt);
 
 xlabel('t');
 
-%% 1a.4 Plotting relative population size c(t)=lambda^{-1}(t)
+%% 1a.4 Plot relative population size c(t)=lambda^{-1}(t)
 
 h_fig=figure('units','normalized','outerposition',[0.2 0.1 0.6 0.85]);
 
