@@ -24,14 +24,14 @@
 %
 %    Here: (A(t),L(t)) is an inhomogenous time-continuous Markov process.
 %
-%    The description of the process (A(t),L(t)) and the equations of CDF
-%    described in the journal article:
+%   The description of the process (A(t),L(t)) and PDE equations for CDF
+%   described in the journal article:
 %
-%    Alexey Miroshnikov, Matthias Steinrücken
-%    "The marginal and joint distributions of the total
-%       tree lengths across loci in populations with variable size".
+%   Alexey Miroshnikov, Matthias Steinrücken
+%   "The marginal and joint distributions of the total
+%      tree lengths across loci in populations with variable size".
 %
-%    Preprint is available at https://arxiv.org/pdf/1609.08880v3
+%   Preprint is available at https://arxiv.org/pdf/1609.08880v3
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -68,6 +68,7 @@ x_max = n*t_max;  % maximal x-interval
 
 ode_options = odeset('NormControl','on','RelTol', 3e-11,...
                      'AbsTol', 3e-11,'MaxStep', 0.25*10^(-2));
+
 rho = 0.0; % recombination rate is zero when computing marginal.
 
 [F,X,T,P_A,N_t_int,v_inv_max] = ...
@@ -87,7 +88,7 @@ x = linspace(0.0, x_max, N_x);
 P_A_L_pde = prob_X_L_1p_upt_decr_interp_t(F, X, T, P_A,N_t_int,...
                                           v_inv_max,x,t,'linear');
                                                                         
-path(old_path); % return original path
+path(orig_path); % return original path
 
 %% 1a.2 Plot P(A(t)=k,L(t)<x)
 

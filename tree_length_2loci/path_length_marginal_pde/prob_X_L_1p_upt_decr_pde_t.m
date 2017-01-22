@@ -91,7 +91,10 @@ end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-N_t = numel(t)
+
+N_t = numel(t);
+
+display(N_t,'number of time points in 1-d PDE computations');
 
 [F,x,vv_inv_M,I,mdata] = prob_X_L_1p_upt_decr_pde_ti(rho,pop_speed_option,Qc,Qr,vv,t,P_X, N_t_int, solver_options, display_flag);
 

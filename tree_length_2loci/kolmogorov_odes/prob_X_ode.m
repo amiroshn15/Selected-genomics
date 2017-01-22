@@ -27,8 +27,6 @@ function [T,Y] = prob_X_ode(rho, pop_speed_option, Qc,Qr, t_range, y_0, ode_opti
         
     end
     
-    
     [T,Y] = ode_options.solver(rhs, t_range, y_0, ode_options);
-    
     
 end
